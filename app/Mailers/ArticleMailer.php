@@ -8,7 +8,7 @@ class ArticleMailer
 
     public function recommendTo($email, $subject, Article $article)
     {
-        Mail::send('emails.article', ['article' => $article], function ($message) use ($email, $subject) {
+        Mail::queue('emails.article', ['article' => $article], function ($message) use ($email, $subject) {
             $message->to($email)->subject($subject);
         });
     }
