@@ -145,6 +145,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 	Collective\Html\HtmlServiceProvider::class,
 	Greggilbert\Recaptcha\RecaptchaServiceProvider::class,
+	App\Providers\WeatherProvider::class,
 
     ],
 

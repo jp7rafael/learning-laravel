@@ -15,6 +15,10 @@
                 <li><a href="{{ url('/articles') }}">Articles</a></li>
                 <li><a href="{{ url('/authors') }}">Authors</a></li>
             </ul>
+	
+	    <ul class="nav navbar-nav navbar-right">
+              @include('shared.weather')
+           </ul>
         </div>
     </div>
 </nav>
