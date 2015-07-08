@@ -9,7 +9,9 @@
         "laravel/framework": "5.1.*",
         "laravelcollective/html": "~5.1",
         "predis/predis": "~1.0",
-        "greggilbert/recaptcha": "~2.0"
+        "greggilbert/recaptcha": "~2.0",
+        "doctrine/dbal": "~2.5",
+        "codeception/codeception": "~2.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
