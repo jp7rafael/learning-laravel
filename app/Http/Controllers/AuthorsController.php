@@ -1,14 +1,13 @@
 <?php
+
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ArticleRequest;
+use App\Http\Requests\AuthorRequest;
 use App\Http\Controllers\Controller;
-use App\Article;
 use App\Author;
 
-class ArticlesController extends Controller
+class AuthorsController extends Controller
 {
-
     /**
      * Display a listing of the resource.
      *
@@ -16,45 +15,36 @@ class ArticlesController extends Controller
      */
     public function index()
     {
-        $articles = Article::all();
-
+        $authors = Author::all();
         return $this->respondTo([
-            'html' => view('articles.index', compact('articles')),
-            'default' => $articles
+            'html' => view('authors.index', compact('authors')),
+            'default' => $authors
         ]);
     }
-
     /**
      * Show the form for creating a new resource.
      *
      * @return Response
      */
     public function create()
-     {
-        $authors = Author::lists('name', 'id')->all();
-
-        $article = new Article;
-
+    {
         return $this->respondTo([
-            'html' => view('articles.create', compact('article', 'authors')),
+            'html' => view('authors.create'),
             'default' => ['_token' => csrf_token()]
         ]);
     }
-
     /**
      * Store a newly created resource in storage.
      *
      * @return Response
      */
-public function store(ArticleRequest $request)    {
-        $article = Article::create($request->all());
-
+public function store(AuthorRequest $request)    {
+        $author = Author::create($request->all());
         return $this->respondTo([
-            'html' => redirect('articles'),
-            'default' => 'Your article was stored with success'
+            'html' => redirect('authors'),
+            'default' => 'Your author was stored with success'
         ]);
     }
-
     /**
      * Display the specified resource.
      *
@@ -63,47 +53,41 @@ public function store(ArticleRequest $request)    {
      */
     public function show($id)
     {
-        $article = Article::findOrFail($id);
+        $author = Author::findOrFail($id);
 
         return $this->respondTo([
-            'html' => view('articles.show', compact('article')),
-            'default' => $article
+            'html' => view('authors.show', compact('author')),
+            'default' => $author
         ]);
     }
-
     /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
      * @return Response
      */
-	 public function edit($id)
+    public function edit($id)
     {
-        $article = Article::findOrFail($id);
-        $authors = Author::lists('name', 'id')->all();
-
+        $author = Author::findOrFail($id);
         return $this->respondTo([
-            'html' => view('articles.edit', compact('article', 'authors')),
+            'html' => view('authors.edit', compact('author')),
             'default' => ['_token' => csrf_token()]
         ]);
     }
-
     /**
      * Update the specified resource in storage.
      *
      * @param  int  $id
      * @return Response
      */
-public function update($id, ArticleRequest $request)    {
-        $article = Article::findOrFail($id);
-        $article->update($request->all());
-
+public function update($id, AuthorRequest $request)    {
+        $author = Author::findOrFail($id);
+        $author->update($request->all());
         return $this->respondTo([
-            'html' => redirect('articles'),
-            'default' => 'Your article was updated with success'
+            'html' => redirect('authors'),
+            'default' => 'Your author was updated with success'
         ]);
     }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -112,12 +96,11 @@ public function update($id, ArticleRequest $request)    {
      */
     public function destroy($id)
     {
-        $article = Article::findOrFail($id);
-        $article->delete();
-
+        $author = Author::findOrFail($id);
+        $author->delete();
         return $this->respondTo([
-            'html' => redirect('articles', 303),
-            'default' => 'Your article was removed with success'
+            'html' => redirect('authors', 303),
+            'default' => 'Your author was removed with success'
         ]);
     }
 }
