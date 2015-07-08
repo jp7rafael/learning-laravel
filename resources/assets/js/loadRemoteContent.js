@@ -19,4 +19,5 @@ $(document).on('ajax:error', '[data-remote]', function(e, data, status, xhr){
 
 $(document).on('ajax:success', '[data-remote]', function(e, data, status, xhr){
     hideFlash();
+    loadFlirckImage();
 });

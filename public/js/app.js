@@ -43,6 +43,31 @@ function hideFlash(target)
   $(target).hide();
 }
 
+function appendImage(img_url, title, container)
+{
+  $("<img title='" + title + "' alt='" + title + "'>")
+    .attr('src', img_url)
+    .appendTo(container);
+}
+
+function loadFlirckImage()
+{
+  $('[data-remote-picture]').each(function() {
+    var container = this;
+    var title = $(container).data('remote-picture');
+    var urlFlickrApi = 'http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?';
+
+    $.getJSON(urlFlickrApi, {
+      tags: title,  
+      tagmode: 'any',
+      format: 'json'
+    })
+    .done(function(data) {
+        appendImage(data.items[0].media.m, title, container);
+    });
+  });
+}
+
 $(document).on('ajax:success', '[data-target]', function(e, data, status, xhr){
   var target = $(this).data('target');
   $(target)
@@ -64,6 +89,7 @@ $(document).on('ajax:error', '[data-remote]', function(e, data, status, xhr){
 
 $(document).on('ajax:success', '[data-remote]', function(e, data, status, xhr){
     hideFlash();
+    loadFlirckImage();
 });
 
 //# sourceMappingURL=app.js.map
