@@ -8,7 +8,8 @@
       {!! Form::label('email', 'Email:') !!}
       {!! Form::text('email', null, ['class' => 'form-control']) !!}
     </div>
-    {!! Form::submit('Send me by e-mail', ['class' => 'btn btn-primary']) !!}
+     {!! Recaptcha::render() !!}
+     {!! Form::submit('Send me by e-mail', ['class' => 'btn btn-primary']) !!}
   {!! Form::close() !!}
   </p>
 @endsection

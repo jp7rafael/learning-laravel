@@ -24,7 +24,8 @@ class ArticleEmailRequest extends Request
     public function rules()
     {
         return [
-            'email' => 'required|email'
+            'email' => 'required|email',
+	    'recaptcha_response_field' => 'required|recaptcha'
         ];
     }
 }
