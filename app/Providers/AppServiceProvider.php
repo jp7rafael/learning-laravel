@@ -13,9 +13,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        view()->composer('*', function ($view) {
+            $view->with('remote', \Request::ajax());
+        });
     }
-
     /**
      * Register any application services.
      *

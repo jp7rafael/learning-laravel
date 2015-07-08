@@ -30,7 +30,7 @@ class ArticlesController extends Controller
      * @return Response
      */
     public function create()
-     {
+    {
         $authors = Author::lists('name', 'id')->all();
 
         $article = new Article;
@@ -46,9 +46,10 @@ class ArticlesController extends Controller
      *
      * @return Response
      */
-public function store(ArticleRequest $request)    {
+    public function store(ArticleRequest $request)
+    {
         $article = Article::create($request->all());
-
+        
         return $this->respondTo([
             'html' => redirect('articles'),
             'default' => 'Your article was stored with success'
@@ -77,8 +78,8 @@ public function store(ArticleRequest $request)    {
      * @param  int  $id
      * @return Response
      */
-	 public function edit($id)
-    {
+     public function edit($id)
+     {
         $article = Article::findOrFail($id);
         $authors = Author::lists('name', 'id')->all();
 
@@ -86,7 +87,7 @@ public function store(ArticleRequest $request)    {
             'html' => view('articles.edit', compact('article', 'authors')),
             'default' => ['_token' => csrf_token()]
         ]);
-    }
+        }
 
     /**
      * Update the specified resource in storage.
@@ -94,15 +95,16 @@ public function store(ArticleRequest $request)    {
      * @param  int  $id
      * @return Response
      */
-public function update($id, ArticleRequest $request)    {
-        $article = Article::findOrFail($id);
-        $article->update($request->all());
+        public function update($id, ArticleRequest $request)
+        {
+                $article = Article::findOrFail($id);
+                $article->update($request->all());
 
-        return $this->respondTo([
+                return $this->respondTo([
             'html' => redirect('articles'),
             'default' => 'Your article was updated with success'
-        ]);
-    }
+                ]);
+        }
 
     /**
      * Remove the specified resource from storage.
@@ -110,14 +112,14 @@ public function update($id, ArticleRequest $request)    {
      * @param  int  $id
      * @return Response
      */
-    public function destroy($id)
-    {
-        $article = Article::findOrFail($id);
-        $article->delete();
+        public function destroy($id)
+        {
+            $article = Article::findOrFail($id);
+            $article->delete();
 
-        return $this->respondTo([
+            return $this->respondTo([
             'html' => redirect('articles', 303),
             'default' => 'Your article was removed with success'
-        ]);
-    }
+            ]);
+        }
 }
