@@ -5,3 +5,11 @@ Homestead.yaml
 .env.testing
 
 tests/_output/*
+
+/storage/*.sqlite
+/public/js/*
+/public/css/*
+/bower_components
+
+tests/_output/*
+c3.php
