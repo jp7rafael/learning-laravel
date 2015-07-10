@@ -30,7 +30,7 @@ class ArticlesController extends Controller
      * @return Response
      */
     public function create()
-     {
+    {
         $authors = Author::lists('name', 'id')->all();
 
         $article = new Article;
@@ -46,7 +46,8 @@ class ArticlesController extends Controller
      *
      * @return Response
      */
-public function store(ArticleRequest $request)    {
+    public function store(ArticleRequest $request)
+    {
         $article = Article::create($request->all());
 
         return $this->respondTo([
@@ -58,13 +59,11 @@ public function store(ArticleRequest $request)    {
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  Article $article
      * @return Response
      */
-    public function show($id)
+    public function show(Article $article)
     {
-        $article = Article::findOrFail($id);
-
         return $this->respondTo([
             'html' => view('articles.show', compact('article')),
             'default' => $article
@@ -74,12 +73,11 @@ public function store(ArticleRequest $request)    {
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  Article $article
      * @return Response
      */
-	 public function edit($id)
+    public function edit(Article $article)
     {
-        $article = Article::findOrFail($id);
         $authors = Author::lists('name', 'id')->all();
 
         return $this->respondTo([
@@ -91,33 +89,32 @@ public function store(ArticleRequest $request)    {
     /**
      * Update the specified resource in storage.
      *
-     * @param  int  $id
+     * @param  Article $article
      * @return Response
      */
-public function update($id, ArticleRequest $request)    {
-        $article = Article::findOrFail($id);
-        $article->update($request->all());
+        public function update(Article $article, ArticleRequest $request)
+        {
+            $article->update($request->all());
 
-        return $this->respondTo([
-            'html' => redirect('articles'),
-            'default' => 'Your article was updated with success'
-        ]);
-    }
+            return $this->respondTo([
+                'html' => redirect('articles'),
+                'default' => 'Your article was updated with success'
+            ]);
+        }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  Article $article
      * @return Response
      */
-    public function destroy($id)
-    {
-        $article = Article::findOrFail($id);
-        $article->delete();
+        public function destroy(Article $article)
+        {
+            $article->delete();
 
-        return $this->respondTo([
-            'html' => redirect('articles', 303),
-            'default' => 'Your article was removed with success'
-        ]);
-    }
+            return $this->respondTo([
+                'html' => redirect('articles', 303),
+                'default' => 'Your article was removed with success'
+            ]);
+        }
 }

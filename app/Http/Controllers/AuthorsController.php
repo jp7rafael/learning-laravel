@@ -38,7 +38,8 @@ class AuthorsController extends Controller
      *
      * @return Response
      */
-public function store(AuthorRequest $request)    {
+    public function store(AuthorRequest $request)
+    {
         $author = Author::create($request->all());
         return $this->respondTo([
             'html' => redirect('authors'),
@@ -48,13 +49,11 @@ public function store(AuthorRequest $request)    {
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  Author $author
      * @return Response
      */
-    public function show($id)
+    public function show(Author $author)
     {
-        $author = Author::findOrFail($id);
-
         return $this->respondTo([
             'html' => view('authors.show', compact('author')),
             'default' => $author
@@ -63,12 +62,11 @@ public function store(AuthorRequest $request)    {
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  Author $author
      * @return Response
      */
-    public function edit($id)
+    public function edit(Author $author)
     {
-        $author = Author::findOrFail($id);
         return $this->respondTo([
             'html' => view('authors.edit', compact('author')),
             'default' => ['_token' => csrf_token()]
@@ -77,11 +75,11 @@ public function store(AuthorRequest $request)    {
     /**
      * Update the specified resource in storage.
      *
-     * @param  int  $id
+     * @param  Author $author
      * @return Response
      */
-public function update($id, AuthorRequest $request)    {
-        $author = Author::findOrFail($id);
+    public function update(Author $author, AuthorRequest $request)
+    {
         $author->update($request->all());
         return $this->respondTo([
             'html' => redirect('authors'),
@@ -91,12 +89,11 @@ public function update($id, AuthorRequest $request)    {
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  Author $author
      * @return Response
      */
-    public function destroy($id)
+    public function destroy(Author $author)
     {
-        $author = Author::findOrFail($id);
         $author->delete();
         return $this->respondTo([
             'html' => redirect('authors', 303),
