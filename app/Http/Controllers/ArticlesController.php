@@ -5,6 +5,7 @@ use App\Http\Requests\ArticleRequest;
 use App\Http\Controllers\Controller;
 use App\Article;
 use App\Author;
+use App\Repositories\DbAuthorRepository;
 
 class ArticlesController extends Controller
 {
@@ -29,10 +30,9 @@ class ArticlesController extends Controller
      *
      * @return Response
      */
-    public function create()
+    public function create(DbAuthorRepository $repository)
     {
-        $authors = Author::lists('name', 'id')->all();
-
+        $authors = $repository->allNames();
         $article = new Article;
 
         return $this->respondTo([
@@ -76,10 +76,10 @@ class ArticlesController extends Controller
      * @param  Article $article
      * @return Response
      */
-    public function edit(Article $article)
+    public function edit(Article $article, DbAuthorRepository $repository)
     {
 
-        $authors = Author::lists('name', 'id')->all();
+        $authors = $repository->allNames();
 
         return $this->respondTo([
             'html' => view('articles.edit', compact('article', 'authors')),
