@@ -1,4 +1,4 @@
-@extends($remote ? 'layouts.ajax' : 'layouts.html')
+@extends($template)
 
 @section('content')
   {!! Form::open(['route' => 'authors.store', 'data-remote' => 'true']) !!}
