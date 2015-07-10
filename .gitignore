@@ -2,3 +2,13 @@
 /node_modules
 Homestead.yaml
 .env
+
+/storage/*.sqlite
+/public/js/*
+/public/css/*
+/bower_components
+
+tests/_output/*
+.env.testing
+c3.php
+
