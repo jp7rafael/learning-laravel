@@ -1,4 +1,4 @@
-@extends($remote ? 'layouts.ajax' : 'layouts.html')
+@extends($template)
 
 @section('content')
   <h4>Recommend "{{ $article->title }}" by e-mail</h4>

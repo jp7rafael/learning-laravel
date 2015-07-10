@@ -1,4 +1,4 @@
-@extends($remote ? 'layouts.ajax' : 'layouts.html')
+@extends($template)
 
 @section('content')
     <h1>Articles</h1>

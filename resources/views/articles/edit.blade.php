@@ -1,4 +1,4 @@
-@extends($remote ? 'layouts.ajax' : 'layouts.html')
+@extends($template)
 
 @section('content')
   {!! Form::model($article, ['method' => 'PATCH', 'route' => ['articles.update', $article->id], 'data-remote' => 'true']) !!}
