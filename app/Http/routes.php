@@ -12,10 +12,10 @@
 */
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+Route::get('/', ['as' => 'welcome.index', 'uses' => 'WelcomeController@index']);
 
 Route::resource('articles', 'ArticlesController');
 Route::resource('authors', 'AuthorsController');
+
+Route::get('/articles/{articles}/recommend', ['as' => 'articles.recommend.create', 'uses' => 'ArticlesEmailController@create']);
+Route::post('/articles/{articles}/recommend', ['as' => 'articles.recommend.send', 'uses' => 'ArticlesEmailController@send']);

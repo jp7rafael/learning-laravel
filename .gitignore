@@ -2,6 +2,9 @@
 /node_modules
 Homestead.yaml
 .env
+.env.testing
+
+tests/_output/*
 
 /storage/*.sqlite
 /public/js/*
@@ -9,6 +12,4 @@ Homestead.yaml
 /bower_components
 
 tests/_output/*
-.env.testing
 c3.php
-

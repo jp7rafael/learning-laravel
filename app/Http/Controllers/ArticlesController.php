@@ -49,7 +49,7 @@ class ArticlesController extends Controller
     public function store(ArticleRequest $request)
     {
         $article = Article::create($request->all());
-
+        
         return $this->respondTo([
             'html' => redirect('articles'),
             'default' => 'Your article was stored with success'
@@ -78,6 +78,7 @@ class ArticlesController extends Controller
      */
     public function edit(Article $article)
     {
+
         $authors = Author::lists('name', 'id')->all();
 
         return $this->respondTo([
@@ -100,6 +101,7 @@ class ArticlesController extends Controller
                 'html' => redirect('articles'),
                 'default' => 'Your article was updated with success'
             ]);
+
         }
 
     /**
@@ -115,6 +117,7 @@ class ArticlesController extends Controller
             return $this->respondTo([
                 'html' => redirect('articles', 303),
                 'default' => 'Your article was removed with success'
+
             ]);
         }
 }

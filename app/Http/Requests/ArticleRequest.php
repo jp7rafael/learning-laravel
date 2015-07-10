@@ -27,7 +27,7 @@ class ArticleRequest extends Request
             'title' => 'required|min:3',
             'content' => 'required',
             'published_at' => 'required|date',
-	    'author_id' => 'required'
+            'author_id' => 'required'
             ];
     }
 }
