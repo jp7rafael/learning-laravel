@@ -13,9 +13,8 @@ class ArticlesEmailController extends Controller
      *
      * @return Response
      */
-    public function create($articleId)
+    public function create(Article $article)
     {
-        $article = Article::findOrFail($articleId);
         return $this->respondTo([
             'html' => view('articles.recommend.create', compact('article'))
         ]);
@@ -26,9 +25,8 @@ class ArticlesEmailController extends Controller
      *
      * @return Response
      */
-    public function send($articleId, ArticleMailer $mailer, ArticleEmailRequest $request)
+    public function send(Article $article, ArticleMailer $mailer, ArticleEmailRequest $request)
     {
-        $article = Article::findOrFail($articleId);
         $mailer->recommendTo($request->input('email'), 'Article recommendation', $article);
 
         return $this->respondTo([
