@@ -12,10 +12,7 @@
 */
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+Route::get('/', ['as' => 'welcome.index', 'uses' => 'WelcomeController@index']);
 
 Route::resource('articles', 'ArticlesController');
 Route::resource('authors', 'AuthorsController');
