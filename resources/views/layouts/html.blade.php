@@ -7,12 +7,11 @@
         <meta name="csrf-param" content="_token" />
     </head>
     <body>
-	@include('shared.nav')
-    @include('shared.alert')
+    @include('shared.nav')
         <section id="content" class="container-fluid">
             @yield('content')
         </section>
         <script type="text/javascript" src='/js/3rd-party.js'></script>
-	<script type="text/javascript" src='/js/app.js'></script>
+    <script type="text/javascript" src='/js/app.js'></script>
     </body>
 </html>

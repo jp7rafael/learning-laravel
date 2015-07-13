@@ -143,9 +143,10 @@ return [
         App\Providers\AppServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-	Collective\Html\HtmlServiceProvider::class,
-	Greggilbert\Recaptcha\RecaptchaServiceProvider::class,
-	App\Providers\WeatherProvider::class,
+        Collective\Html\HtmlServiceProvider::class,
+        Greggilbert\Recaptcha\RecaptchaServiceProvider::class,
+        App\Providers\WeatherProvider::class,
+        Laracasts\Flash\FlashServiceProvider::class,
 
     ],
 
@@ -194,9 +195,10 @@ return [
         'URL'       => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
-	'Form'      => Collective\Html\FormFacade::class,
-	'Html'      => Collective\Html\HtmlFacade::class,
-	'Recaptcha' => Greggilbert\Recaptcha\Facades\Recaptcha::class,
+        'Form'      => Collective\Html\FormFacade::class,
+        'Html'      => Collective\Html\HtmlFacade::class,
+        'Recaptcha' => Greggilbert\Recaptcha\Facades\Recaptcha::class,
+        'Flash' => Laracasts\Flash\Flash::class,
 
     ],
 

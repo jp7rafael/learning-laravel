@@ -3,6 +3,8 @@
 Homestead.yaml
 .env
 .env.testing
+public/css
+public/js
 
 tests/_output/*
 

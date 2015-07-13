@@ -5,6 +5,7 @@ use App\Http\Requests\ArticleRequest;
 use App\Http\Controllers\Controller;
 use App\Article;
 use App\Author;
+use Flash;
 use App\Repositories\DbAuthorRepository;
 
 class ArticlesController extends Controller
@@ -49,7 +50,7 @@ class ArticlesController extends Controller
     public function store(ArticleRequest $request)
     {
         $article = Article::create($request->all());
-        
+
         return $this->respondTo([
             'html' => redirect('articles'),
             'default' => 'Your article was stored with success'
@@ -95,6 +96,7 @@ class ArticlesController extends Controller
      */
         public function update(Article $article, ArticleRequest $request)
         {
+            Flash::message('Your article was updated with success');
             $article->update($request->all());
 
             return $this->respondTo([
@@ -113,11 +115,10 @@ class ArticlesController extends Controller
         public function destroy(Article $article)
         {
             $article->delete();
-
+            Flash::success('Your article was removed with success');
             return $this->respondTo([
                 'html' => redirect('articles', 303),
                 'default' => 'Your article was removed with success'
-
             ]);
         }
 }

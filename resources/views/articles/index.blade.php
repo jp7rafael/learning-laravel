@@ -1,6 +1,7 @@
 @extends($template)
 
 @section('content')
+    @include('flash::message')
     <h1>Articles</h1>
     {!! link_to_route('articles.create', 'New Article', null, ['class' => 'btn btn-primary btn-lg', 'data-remote' => 'true']) !!}
 <table class="table">
@@ -14,7 +15,7 @@
             <tr>
                 <td>{!! link_to_route('articles.edit', 'Edit', $article->id, ['class'=> 'btn btn-default', 'data-remote' => 'true']) !!}</td>
                 <td>
-                    {!! link_to_route('articles.destroy', 'Delete', $article->id, 
+                    {!! link_to_route('articles.destroy', 'Delete', $article->id,
                     ['data-method' => 'DELETE', 'data-remote' => 'true', 'class' => 'btn btn-warning']) !!}
                 </td>
                 <td>{!! link_to_route('articles.recommend.create', 'Recommend', $article->id) !!}</td>
