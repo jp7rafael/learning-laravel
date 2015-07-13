@@ -9,7 +9,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 abstract class Controller extends BaseController
 {
     use DispatchesJobs, ValidatesRequests;
-	public function wantsHtml()
+    public static function wantsHtml()
     {
         $acceptable = \Request::getAcceptableContentTypes();
 
@@ -19,7 +19,7 @@ abstract class Controller extends BaseController
 
     public function respondTo($formats)
     {
-        if (isset($formats['html']) && $this->wantsHtml()) {
+        if (isset($formats['html']) && Controller::wantsHtml()) {
             return $formats['html'];
         } else {
             return $formats['default'];
